@@ -435,12 +435,12 @@
                     </a>
                 </li>
             @endif
-            <li>
+            {{-- <li>
                 <a href="{{ route('logout') }}">
                     <i class="ti-power-off"></i>
                     <span>Help</span>
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('logout') }}">
                     <i class="ti-power-off"></i>
