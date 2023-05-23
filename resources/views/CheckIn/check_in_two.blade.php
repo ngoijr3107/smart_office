@@ -72,9 +72,9 @@
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
                                                     aria-label="Default select example" name="department">
                                                     <option selected disabled>Select Department..</option>
-                                                    <option value="1">ICT</option>
-                                                    <option value="2">HR</option>
-                                                    <option value="3">Procurement</option>
+                                                    <option value="ICT">ICT</option>
+                                                    <option value="HR">HR</option>
+                                                    <option value="Procurement">Procurement</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -86,9 +86,9 @@
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
                                                     aria-label="Default select example" name="purpose">
                                                     <option selected disabled>Select Purpose..</option>
-                                                    <option value="1">Interview</option>
-                                                    <option value="2">Meeting</option>
-                                                    <option value="3">Other</option>
+                                                    <option value="Interview">Interview</option>
+                                                    <option value="Meeting">Meeting</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                             </div>
                                         </div>
