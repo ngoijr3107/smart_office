@@ -8,7 +8,25 @@
 
 @section('content')
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-md-4">
+            <div class="card shadow-sm p-2">
+                <h4>Total visitors</h4>
+                <h3>10</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-2">
+                <h4>Total departments</h4>
+                <h3>10</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-2">
+                <h4>All visitors</h4>
+                <h3>10</h3>
+            </div>
+        </div>
+        {{-- <div class="col-sm-12">
             <div class="box">
                 <div class="box-header">
                     <div class="row">
@@ -18,7 +36,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 @endsection
