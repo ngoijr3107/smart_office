@@ -52,85 +52,97 @@
                                 style="background: rgba(255, 255, 255, .9)">
                                 <div class="row mb-4">
                                     <div class="col-12 text-center">
-                                        <img src="{{ asset('/img/logo_web.png') }}" alt="" style="height: 80px">
-                                        <hr>
-                                        <h1 class="text-center text-bold">Check-Out</h1>
+                                        <img src="{{ asset('/img/logo_web.png') }}" alt=""
+                                            style="height: 60px; margin-bottom: 12px">
+                                        {{-- <hr> --}}
+                                        <h5 class="text-center text-bold">Hi {{ $visitor->fname }}, Please click
+                                            Check-Out button to confirm Check-Out</h5>
                                         {{-- <h3 class="text-center">Please find your name and then Check-out</h3> --}}
                                         <hr>
                                     </div>
                                 </div>
 
-                                <form action="{{ url('checkOutConfirm', $visitor->id) }}" method="POST">
-                                    @method('PATCH')
+                                <form action="{{ url('checkOutConfirm', ['visitor' => $visitor->id]) }}" method="POST">
+                                    @method('PUT')
                                     @csrf
                                     <div class="row">
-                                        <div class="col-6 form-group">
+                                        <div class="col-4 form-group">
+                                            <label for="fname">First Name</label>
                                             <div class="input-group mb-3">
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="First name" name="fname" value="{{ $visitor->fname }}" disabled>
+                                                    placeholder="First name" name="fname"
+                                                    value="{{ $visitor->fname }}" disabled>
                                             </div>
                                         </div>
-                                        <div class="col-6 form-group">
+                                        <div class="col-4 form-group">
+                                            <label for="lname">Last name</label>
                                             <div class="input-group mb-3">
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Last name" name="lname" value="{{ $visitor->lname }}" disabled>
+                                                    placeholder="Last name" name="lname"
+                                                    value="{{ $visitor->lname }}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 form-group">
+                                            <label for="email">email</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text"
+                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
+                                                    placeholder="Email" name="email" value="{{ $visitor->email }}"
+                                                    disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 form-group">
+                                            <label for="phone">phone</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text"
+                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
+                                                    placeholder="Phone" name="phone" value="{{ $visitor->phone }}"
+                                                    disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 form-group">
+                                            <label for="company">company</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text"
+                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
+                                                    placeholder="Company" name="company"
+                                                    value="{{ $visitor->company }}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 form-group">
+                                            <label for="c_no">car plate no.</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text"
+                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
+                                                    placeholder="Car plate no." name="c_no"
+                                                    value="{{ $visitor->c_no }}" disabled>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-6 form-group">
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Email" name="email" value="{{ $visitor->email }}" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 form-group">
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Phone" name="phone" value="{{ $visitor->phone }}" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-12 form-group">
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Company" name="company" value="{{ $visitor->company }}" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 form-group">
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Car plate no." name="c_no" value="{{ $visitor->c_no }}" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-12 form-group">
                                             <label for="department">Department</label>
                                             <div class="input-group mb-3">
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Department" name="department" value="{{ $visitor->department }}" disabled>
-                                            </div>
+                                                    placeholder="Department" name="department"
+                                                    value="{{ $visitor->department }}" disabled>
                                             </div>
                                         </div>
 
-                                        <div class="col-12 form-group">
+
+                                        <div class="col-6 form-group">
                                             <label for="purpose">Purpose</label>
                                             <div class="input-group mb-3">
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Purpose" name="purpose" value="{{ $visitor->purpose }}" disabled>
+                                                    placeholder="Purpose" name="purpose"
+                                                    value="{{ $visitor->purpose }}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +154,8 @@
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
                                                     placeholder="Time to check-in" id="checkin-time"
-                                                    name="checkintime" readonly disabled>
+                                                    value="{{ $visitor->checkintime }}" name="checkintime" readonly
+                                                    disabled>
                                             </div>
                                         </div>
 
@@ -152,7 +165,19 @@
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
                                                     placeholder="Time to check-out" id="checkout-time"
-                                                    name="checkintime" readonly>
+                                                    name="checkouttime" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 form-group">
+                                            <label for="comment">Comment</label>
+                                            <div class="input-group mb-3">
+                                                <textarea type="text"
+                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
+                                                    placeholder="How did you find our service?" id="comment"
+                                                    value="" name="comment"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -169,13 +194,6 @@
                                         <!-- /.col -->
                                     </div>
                                 </form>
-
-                                <div class="pt-4">
-                                    {{-- <h4 class="text-dark font-size-30">Get Started<br>with your Dashboard</h4> --}}
-                                    {{-- <h5 class="text-dark mb-0">need support? <a
-                                        href="mailto:vms@techvilla.co.tz?subject=Need support smart office"
-                                        class="text-info">vms@techvilla.co.tz</a></h5> --}}
-                                </div>
                             </div>
                         </div>
                     </div>
