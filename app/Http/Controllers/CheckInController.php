@@ -101,43 +101,42 @@ class CheckInController extends Controller
     }
 
     public function checkOutConfirm(Request $request, $id)
-{
-    $fname = $request->input('fname');
-    $lname = $request->input('lname');
-    $email = $request->input('email');
-    $phone = $request->input('phone');
-    $company = $request->input('company');
-    $c_no = $request->input('c_no');
-    $department = $request->input('department');
-    $purpose = $request->input('purpose');
-    $status = 'out';
-    $checkintime = $request->input('checkintime');
-    $checkouttime = $request->input('checkouttime');
-    $comment = $request->input('comment');
+    {
+        $fname = $request->input('fname');
+        $lname = $request->input('lname');
+        $email = $request->input('email');
+        $phone = $request->input('phone');
+        $company = $request->input('company');
+        $c_no = $request->input('c_no');
+        $department = $request->input('department');
+        $purpose = $request->input('purpose');
+        $status = 'out';
+        $checkintime = $request->input('checkintime');
+        $checkouttime = $request->input('checkouttime');
+        $comment = $request->input('comment');
 
-    // Update database values
-    try {
-        $check_in = Visitor::find($id);
-    // $check_in->fname = $fname;
-    // $check_in->lname = $lname;
-    // $check_in->email = $email;
-    // $check_in->phone = $phone;
-    // $check_in->company = $company;
-    // $check_in->c_no = $c_no;
-    // $check_in->department = $department;
-    // $check_in->purpose = $purpose;
-    $check_in->status = $status;
-    // $check_in->checkintime = $checkintime;
-    // $check_in->checkouttime = $checkouttime;
-    $check_in->comment = $comment;
-    $check_in->save();
+        // Update database values
+        try {
+            $check_in = Visitor::find($id);
+            // $check_in->fname = $fname;
+            // $check_in->lname = $lname;
+            // $check_in->email = $email;
+            // $check_in->phone = $phone;
+            // $check_in->company = $company;
+            // $check_in->c_no = $c_no;
+            // $check_in->department = $department;
+            // $check_in->purpose = $purpose;
+            $check_in->status = $status;
+            // $check_in->checkintime = $checkintime;
+            // $check_in->checkouttime = $checkouttime;
+            $check_in->comment = $comment;
+            $check_in->save();
 
-        Alert::success('Success', 'Checked-out successfully!');
-        return redirect()->route('home');
-    } catch (\Exception $e) {
-        Alert::error('Error Title', 'Error Message');
-        return redirect()->route('home');
+            Alert::success('Success', 'Checked-out successfully!');
+            return redirect()->route('home');
+        } catch (\Exception $e) {
+            Alert::error('Error Title', 'Error Message');
+            return redirect()->route('home');
+        }
     }
-}
-
 }
