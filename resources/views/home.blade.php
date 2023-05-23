@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-        {{-- @include('sweetalert::alert') --}}
+        @include('sweetalert::alert')
         <!-- jQuery 3 -->
         <script src="{{ asset('vendor/jquery-3.3.1/jquery-3.3.1.js') }}"></script>
         <script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
