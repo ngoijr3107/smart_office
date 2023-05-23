@@ -10,6 +10,6 @@ class Visitor extends Model
     use HasFactory;
     protected $fillable = [
         'lname','fname','email','phone','company','c_no','department',
-        'purpose','status','checkintime','checkouttime',
+        'purpose','status','checkintime','checkouttime', 'signature',
     ];
 }
