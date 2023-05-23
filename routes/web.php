@@ -57,8 +57,8 @@ Route::post('saveCheckin', [CheckInController::class, 'saveCheckIn'])->name('sav
 
 //Check-out routes
 Route::get('checkOut', [CheckInController::class, 'checkOut'])->name('checkOut');
-Route::get('checkOutItem', [CheckInController::class, 'checkOutItem'])->name('checkOutItem');
-Route::post('checkOutConfirm', [CheckInController::class, 'checkOutConfirm'])->name('checkOutConfirm');
+Route::get('checkOutItem/{id}', [CheckInController::class, 'checkOutItem'])->name('checkOutItem');
+Route::put('checkOutConfirm/{visitor}', [CheckInController::class, 'checkOutConfirm'])->name('checkOutConfirm');
 //Check-out routes
 
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name('loginForm');
