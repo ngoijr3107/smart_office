@@ -28,7 +28,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;" data-overlay="1"> --}}
-    <body class="hold-transition bg-img" style="background: url('{{ asset('/img/bg_login.jpg') }}') no-repeat center center fixed;
+    <body class="hold-transition bg-img" style="background: url('{{ asset('/img/bg_login1.jpg') }}') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -37,9 +37,9 @@
             <div class="row align-items-center justify-content-md-center h-p100">
                 <div class="col-12">
                     <div class="row no-gutters">
-                        <div class="col-lg-8 col-md-7 col-12"></div>
-                        <div class="col-lg-3 col-md-5 col-12 xtd">
-                            <h2 class="text-center">Welcome to VMS</h2>
+                        <div class="col-lg-8 col-md-5 col-12"></div>
+                        <div class="col-lg-4 col-md-7 col-12 xtd">
+                            {{-- <h2 class="text-center">Welcome to VMS</h2> --}}
                             <div class="p-30 content-bottom rounded bg-img box-shadowed" style="background: rgba(255, 255, 255, .7)">
                                 <div class="row mb-4">
                                     <div class="col-12 text-center">
@@ -106,10 +106,10 @@
                                         <!-- /.col -->
                                     </div>
                                 </form>
-                                <div class="pt-4">
-                                    {{-- <h4 class="text-dark font-size-30">Get Started<br>with your Dashboard</h4> --}}
+                                {{-- <div class="pt-4">
+                                    {{-- <h4 class="text-dark font-size-30">Get Started<br>with your Dashboard</h4>
                                     <h5 class="text-dark mb-0">need support? <a href="mailto:vms@techvilla.co.tz?subject=Need support smart office" class="text-info">vms@techvilla.co.tz</a></h5>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
