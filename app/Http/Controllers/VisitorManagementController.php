@@ -15,6 +15,7 @@ use Mail;
 class VisitorManagementController extends Controller
 {
     public function index(Request $request){
-        return view('VisitorManagement.index');
+        $visitors = Visitor::latest()->get();
+        return view('VisitorManagement.index')->with('visitors', $visitors);
     }
 }
