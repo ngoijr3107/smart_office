@@ -37,10 +37,11 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\VisitorProjectController;
 use App\Http\Controllers\EmployeeProjectController;
 use App\Http\Controllers\GaController;
-use App\Http\Controllers\VisitorController;
+// use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\SpecialGuestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckInController;
+use App\Http\Controllers\SmartOffice\VisitorController;
 
 // function index() {
 //     return view('home');
@@ -60,6 +61,10 @@ Route::get('checkOut', [CheckInController::class, 'checkOut'])->name('checkOut')
 Route::get('checkOutItem/{id}', [CheckInController::class, 'checkOutItem'])->name('checkOutItem');
 Route::put('checkOutConfirm/{visitor}', [CheckInController::class, 'checkOutConfirm'])->name('checkOutConfirm');
 //Check-out routes
+
+//Admin visitors routes
+Route::get('visitorList', [VisitorController::class, 'listVisitors'])->name('visitorList');
+//Admin visitors routes
 
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name('loginForm');
 Route::post('login', [AuthController::class, 'login'])->name('login');
