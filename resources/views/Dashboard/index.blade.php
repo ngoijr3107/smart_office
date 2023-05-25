@@ -10,20 +10,20 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card shadow-sm p-2">
-                <h4>Total visitors</h4>
-                <h3>10</h3>
+                <p>Total visitors</p>
+                <h5>{{ $visitors }}</h5>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card shadow-sm p-2">
-                <h4>Total departments</h4>
-                <h3>10</h3>
+                <p>Total visitors</p>
+                <h5>{{ $visitors }}</h5>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card shadow-sm p-2">
-                <h4>All visitors</h4>
-                <h3>10</h3>
+                <p>Total visitors</p>
+                <h5>{{ $visitors }}</h5>
             </div>
         </div>
         {{-- <div class="col-sm-12">
