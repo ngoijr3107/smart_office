@@ -128,7 +128,7 @@ class CheckInController extends Controller
             // $check_in->purpose = $purpose;
             $check_in->status = $status;
             // $check_in->checkintime = $checkintime;
-            // $check_in->checkouttime = $checkouttime;
+            $check_in->checkouttime = $checkouttime;
             $check_in->comment = $comment;
             $check_in->save();
 
