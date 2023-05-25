@@ -65,7 +65,7 @@
                                 <form action="{{ url('checkOutConfirm', ['visitor' => $visitor->id]) }}" method="POST">
                                     @method('PUT')
                                     @csrf
-                                    <div class="row">
+                                    {{-- <div class="row">
                                         <div class="col-4 form-group">
                                             <label for="fname">First Name</label>
                                             <div class="input-group mb-3">
@@ -145,10 +145,10 @@
                                                     value="{{ $visitor->purpose }}" disabled>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="row">
-                                        <div class="col-6 form-group">
+                                        {{-- <div class="col-6 form-group">
                                             <label for="checkintime">Check-in time</label>
                                             <div class="input-group mb-3">
                                                 <input type="text"
@@ -157,10 +157,11 @@
                                                     value="{{ $visitor->checkintime }}" name="checkintime" readonly
                                                     disabled>
                                             </div>
-                                        </div>
+                                        </div> --}}
+
 
                                         <div class="col-6 form-group">
-                                            <label for="checkintime">Check-out time</label>
+                                            <label for="checkouttime">Check-out time</label>
                                             <div class="input-group mb-3">
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
@@ -170,14 +171,37 @@
                                         </div>
                                     </div>
 
+                                    {{-- <div class="row"> --}}
+                                        {{-- radio inputs --}}
+
+                                        {{-- <div class="col-12 form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Very bad</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">Bad</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio3" value="option3">
+                                                <label class="form-check-label" for="inlineRadio3">Good</label>
+                                            </div>
+                                        </div> --}}
+
+                                        {{-- radio inputs --}}
+                                    {{-- </div> --}}
+
                                     <div class="row">
+
                                         <div class="col-12 form-group">
                                             <label for="comment">Comment</label>
                                             <div class="input-group mb-3">
-                                                <textarea type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="How did you find our service?" id="comment"
-                                                    value="" name="comment"></textarea>
+                                                <textarea type="text" class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
+                                                    placeholder="How did you find our service?" id="comment" value="" name="comment"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -207,18 +231,18 @@
 
         <script>
             const previousButton = document.querySelector('#previous-button');
+            const datetimeField = document.querySelector('#checkout-time');
 
             previousButton.addEventListener('click', () => {
                 history.back();
-
-                const datetimeField = document.querySelector('#checkout-time');
-
-                setInterval(() => {
-                    const now = new Date();
-                    datetimeField.value = now.toISOString().slice(0, 19).replace('T', ' ');
-                }, 1000);
             });
+
+            setInterval(() => {
+                const now = new Date();
+                datetimeField.value = now.toISOString().slice(0, 19).replace('T', ' ');
+            }, 1000);
         </script>
+
 
     </body>
 
