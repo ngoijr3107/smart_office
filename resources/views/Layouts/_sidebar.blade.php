@@ -343,7 +343,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="pt-3 {{ Request::segment(1) === 'areas' ? 'active' : '' }}">
+                        {{-- <li class="pt-3 {{ Request::segment(1) === 'areas' ? 'active' : '' }}">
                             <a href="{{ url('areas') }}">
                                 <i class="ti-location-pin"></i>
                                 <span>Area</span>
@@ -360,14 +360,14 @@
                                 <i class="ti-location-pin"></i>
                                 <span>Site</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="pt-3 {{ Request::segment(1) === 'purpose' ? 'active' : '' }}">
                             <a href="{{ url('purpose') }}">
                                 <i class="ti-pencil-alt2"></i>
                                 <span>Purpose</span>
                             </a>
                         </li>
-                        <li class="pt-3 {{ Request::segment(1) === 'suppliers' ? 'active' : '' }}">
+                        {{-- <li class="pt-3 {{ Request::segment(1) === 'suppliers' ? 'active' : '' }}">
                             <a href="{{ url('suppliers') }}">
                                 <i class="ti-package"></i>
                                 <span>Supplier</span>
@@ -396,10 +396,10 @@
                                 <i class="ti-hummer"></i>
                                 <span>High Risk Tools</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
-                <li class="treeview {{ Request::segment(1) === 'vms-parameter' ? 'active' : '' }}">
+                {{-- <li class="treeview {{ Request::segment(1) === 'vms-parameter' ? 'active' : '' }}">
                     <a href="#">
                         <i class="ti-settings"></i>
                         <span>Frontdesk</span>
@@ -415,7 +415,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             @endif
             @if (Auth::user()->user_type != 20 && Auth::user()->user_type != 30)
