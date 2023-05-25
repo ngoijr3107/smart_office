@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Validator;
 use Session;
-use App\Models\Purpose;
+use App\Models\VisitPurpose;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\New_;
@@ -15,10 +14,7 @@ class PurposeController extends Controller
 {
     public function index()
     {
-
-        $datas = DB::table('purpose')
-            ->orderBy('purpose.created_at', 'ASC')
-            ->get();
+        $datas = VisitPurpose::latest()->get();
         return view('Purpose.index', compact('datas'));
     }
 
@@ -28,56 +24,56 @@ class PurposeController extends Controller
     }
 
     public function storePurpose(Request $request)
-    {
-        $rules = [
-            'name'                  => 'required|unique:purpose,name|min:3|max:50',
-        ];
+{
+    $rules = [
+        'purpose_name' => 'required|unique:visit_purposes,name|min:3|max:50',
+    ];
 
-        $messages = [
-            'name.required'         => 'Purpose Category name is required',
-            'name.min'              => 'Purpose Category name of at least 3 characters',
-            'name.max'              => 'Purpose Category name up to 50 characters',
-            'name.unique'           => 'Purpose Category name has already exist',
-        ];
+    $messages = [
+        'purpose_name.required' => 'Purpose name is required.',
+        'purpose_name.min' => 'Purpose name must be at least 3 characters.',
+        'purpose_name.max' => 'Purpose name must not exceed 50 characters.',
+        'purpose_name.unique' => 'Purpose name already exists.',
+    ];
 
-        $validator = Validator::make($request->all(), $rules, $messages);
+    $validator = Validator::make($request->all(), $rules, $messages);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
-
-        $purpose = new Purpose;
-        $purpose->name = ucwords(strtolower($request->name));
-        $purpose->description = ($request->description);
-        $purpose->category = ($request->category);
-        $save = $purpose->save();
-
-        if ($save) {
-            Session::flash('success', 'Successfully added a new Purpose Category.');
-            return redirect()->route('purpose');
-        } else {
-            Session::flash('errors', ['' => 'Failed to add new Purpose Category, Please try again later']);
-            return redirect()->route('purpose');
-        }
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput($request->all());
     }
+
+    $purpose = new VisitPurpose;
+    $purpose->name = ucwords(strtolower($request->purpose_name));
+    // $purpose->description = $request->description;
+    // $purpose->category = $request->category;
+    $save = $purpose->save();
+
+    if ($save) {
+        Session::flash('success', 'Successfully added a new purpose.');
+        return redirect()->route('purpose');
+    } else {
+        Session::flash('error', 'Failed to add a new purpose. Please try again later.');
+        return redirect()->route('purpose');
+    }
+}
 
     public function editPurpose($id)
     {
-        $purpose = Purpose::find($id);
+        $purpose = VisitPurpose::find($id);
         return view('Purpose._edit', compact('purpose'));
     }
 
     public function updatePurpose(Request $request, $id)
     {
-        $purpose = Purpose::find($id)->update($request->all());
+        $purpose = VisitPurpose::find($id)->update($request->all());
 
-        Session::flash('success', 'Purpose Category has been successfully updated.');
+        Session::flash('success', 'Purpose has been successfully updated.');
         return redirect()->route('purpose');
     }
 
     public function deletePurpose($id)
     {
-        $delete = DB::table('purpose')->where('id', $id)->delete();
+        $delete = DB::table('visit_purposes')->where('id', $id)->delete();
 
         Session::flash('success', 'Purpose Category has been successfully deleted.');
         return redirect()->route('purpose');
