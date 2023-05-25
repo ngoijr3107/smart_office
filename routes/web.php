@@ -137,16 +137,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('suppliers-get', [SupplierController::class, 'getAllSuppliers'])->name('getAllSupplier');
     Route::get('suppliers/add-new', [SupplierController::class, 'addSupplier'])->name('suppliersAdd');
     Route::post('suppliers/add-new', [SupplierController::class, 'storeSupplier'])->name('suppliersStore');
-    Route::get('suppliers/edit/{id}', [SupplierController::class, 'editSupplier'])->name('suppliersEdit');;
-    Route::post('suppliers/update/{id}', [SupplierController::class, 'updateSupplier'])->name('suppliersUpdate');;
+    Route::get('suppliers/edit/{id}', [SupplierController::class, 'editSupplier'])->name('suppliersEdit');
+    Route::post('suppliers/update/{id}', [SupplierController::class, 'updateSupplier'])->name('suppliersUpdate');
     Route::delete('suppliers/{id}', [SupplierController::class, 'deleteSupplier'])->name('suppliersDelete');
 
     //Purpose
     Route::get ('purpose', [PurposeController::class, 'index'])->name('purpose');
     Route::get('purpose/add-new', [PurposeController::class, 'addPurpose'])->name('purposeAdd');
     Route::post('purpose/add-new', [PurposeController::class, 'storePurpose'])->name('purposeStore');
-    Route::get('purpose/edit/{id}', [PurposeController::class, 'editPurpose'])->name('purposeEdit');;
-    Route::post('purpose/update/{id}', [PurposeController::class, 'updatePurpose'])->name('purposeUpdate');;
+    Route::get('purpose/edit/{id}', [PurposeController::class, 'editPurpose'])->name('purposeEdit');
+    Route::post('purpose/update/{id}', [PurposeController::class, 'updatePurpose'])->name('purposeUpdate');
     Route::delete('purpose/{id}', [PurposeController::class, 'deletePurpose'])->name('purposeDelete');
 
     Route::get('digital-signage', [DigitalSignageController::class, 'index'])->name('digitalSignage');
