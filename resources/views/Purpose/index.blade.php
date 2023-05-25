@@ -2,36 +2,19 @@
 
 @section('breadcrumb')
     <div class="mr-auto w-p50">
-        <h3 class="page-title border-0">Purpose Category</h3>
+        <h3 class="page-title border-0">Visit Purposes</h3>
     </div>
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-12 col-md-6 col-xl-3">
-            <div class="flexbox flex-justified text-center mb-30 bg-primary">
-                <div class="no-shrink py-30">
-                    <span class="ti-hummer font-size-50"></span>
-                </div>
-                <div class="py-30 bg-white text-dark">
-                    <div class="font-size-30">
-                        <?php
-                            $count = DB::table('purpose')->count();
-                            echo $count;
-                        ?>
-                    </div>
-                    <span>Total Purpose Category</span>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="row">
         <div class="col-12">
             <div class="box">
                 <div class="box-header">
                     <div class="row">
                         <div class="col-6 text-left">
-                            <h4 class="box-title">Purpose Category List</h4>
+                            <h4 class="box-title">Purpose List</h4>
                         </div>
                         <div class="col-6 text-right">
                             <a href="{{ route('purposeAdd') }}" class="btn btn-bold btn-pure btn-info">Add</a>
@@ -41,7 +24,7 @@
                 <div class="box-body">
                     @if(session('errors'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Something it's wrong:
+                            Something is wrong:
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -74,8 +57,6 @@
                                 <tr>
                                     <th class="text-center">#</th>
                                     <th class="text-left">Name</th>
-                                    <th class="text-left">Description</th>
-                                    <th class="text-center">Category</th>
                                     <th class="text-center">Last Update</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -87,25 +68,9 @@
                                 @foreach ( $datas as $data )
                                     <tr>
                                         <td class="text-center">{{ $no++}}</td>
-                                        <td class="text-left text-nowrap">{{ $data->name}}</td>
-                                        <td class="text-left">{{ $data->description}}</td>
-                                        <td class="text-center text-success">
-                                            <span class="btn btn-block btn-rounded btn-primary">
-                                            @switch($data->category)
-                                                @case(1)
-                                                    Visit Purpose
-                                                    @break
-                                                @case(2)
-                                                    Area Purpose
-                                                    @break
-                                                @case(3)
-                                                    Communication Purpose
-                                                    @break
-                                                @default
-                                                    Visit Purpose
-                                                    @break
-                                            @endswitch
-                                            </span>
+                                        <td class="text-left text-nowrap">{{ $data->purpose_name}}</td>
+                                        {{-- <td class="text-left">{{ $data->description}}</td> --}}
+
                                         </td>
                                         <td class="text-center">
                                             {{ date('M d Y, H:i', strtotime($data->updated_at)) }}
