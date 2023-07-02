@@ -17,7 +17,7 @@
                             <h4 class="box-title">Purpose List</h4>
                         </div>
                         <div class="col-6 text-right">
-                            <a href="{{ route('purposeAdd') }}" class="btn btn-bold btn-pure btn-info">Add</a>
+                            <a href="{{ route('purposeAdd') }}" class="btn btn-bold btn-pure btn-info">Add purpose</a>
                         </div>
                     </div>
                 </div>
@@ -69,22 +69,19 @@
                                     <tr>
                                         <td class="text-center">{{ $no++}}</td>
                                         <td class="text-left text-nowrap">{{ $data->purpose_name}}</td>
-                                        {{-- <td class="text-left">{{ $data->description}}</td> --}}
-
-                                        </td>
                                         <td class="text-center">
                                             {{ date('M d Y, H:i', strtotime($data->updated_at)) }}
                                         </td>
                                         <td class="text-center">
                                             <span data-toggle="modal" class="btn-view" id="{{ $data -> id}}" data-purpose="{{ json_encode($data) }}" data-target="#modal-detail">
-                                                <a href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="View">
+                                                <a class="btn btn-sm btn-primary" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="View">
                                                     <i class="ti-eye"></i>
                                                 </a>
                                             </span>
                                             <form action="{{ url('purpose/'.$data -> id) }}" method="POST" onsubmit="return confirm('Are you sure? This record and its details will be permanantly deleted!')" class="d-inline">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button class="ml-3 btn-action" data-toggle="tooltip" data-placement="bottom" title="Delete">
+                                                <button class="ml-3 btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete">
                                                     <i class="ti-trash"></i>
                                                 </button>
                                             </form>
@@ -104,7 +101,6 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    {{-- <h5 class="modal-title">Large Meeting Room	</h5> --}}
                     <button type="button" class="close" style="padding-right: 28px" data-dismiss="modal">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -114,22 +110,14 @@
                         <div class="col-sm-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h4 class="box-title">View Tools</h4>
+                                    <h4 class="box-title">View Purposes</h4>
                                 </div>
                                 <form action="" method="GET" enctype="multipart/form-data">
                                 @csrf
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label>Tools Name</label>
-                                            <input type="text" name="name" class="form-control" value="" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tools Description</label>
-                                            <textarea rows="4" name="description" cols="4" class="form-control" readonly></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <input name="category" type="text" class="form-control" readonly>
+                                            <label for="purpose_name">Name</label>
+                                            <input type="text" name="purpose_name" class="form-control" value="{{ $data->purpose_name }}" readonly>
                                         </div>
                                     </div>
                                     <div class="box-footer">

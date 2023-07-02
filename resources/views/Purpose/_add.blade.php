@@ -40,23 +40,9 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="purpose_name" class="form-control" value="" placeholder="">
+                            <label for="purpose_name">Name</label>
+                            <input type="text" name="purpose_name" class="form-control" value="" placeholder="Enter visit purpose...">
                         </div>
-                        {{-- <div class="form-group">
-                            <label>Description</label>
-                            <textarea rows="4" name="description" cols="4" class="form-control" placeholder=""></textarea>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-sm-12 col-12">
-                                <select name="category" class="select2" style="width: 100%">
-                                    <option value="none" disabled selected>Purpose Category</option>
-                                    <option value="1" >Visit Purpose</option>
-                                    <option value="2" >Area Purpose</option>
-                                    <option value="3" >Communication Purpose</option>
-                                </select>
-                            </div>
-                        </div> --}}
                     </div>
                     <div class="box-footer">
                         <div class="row">

@@ -65,11 +65,89 @@
                                             <td class="text-left text-nowrap"><span
                                                     class="badge badge-info">Checked-out</span></td>
                                         @endif
-                                        <td class="text-center">Action</td>
+                                        <td class="text-center">
+                                            <span data-toggle="modal" class="btn-view" id="{{ $visitor->id }}"
+                                                data-purpose="{{ json_encode($visitor) }}" data-target="#modal-detail">
+                                                <a class="btn btn-sm btn-primary" href="javascript:void(0);"
+                                                    data-toggle="tooltip" data-placement="bottom" title="View">
+                                                    <i class="ti-eye"></i>
+                                                </a>
+                                            </span>
+                                            <form action="{{ url('visitor/' . $visitor->id) }}" method="POST"
+                                                onsubmit="return confirm('Are you sure? This record and its details will be permanantly deleted!')"
+                                                class="d-inline">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="ml-3 btn btn-danger" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Delete">
+                                                    <i class="ti-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- MODAL HERE --}}
+    <div class="modal modal-fill fade" data-backdrop="false" id="modal-detail" tabindex="-1" style="z-index: 9999">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" style="padding-right: 28px" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h4 class="box-title">View Visitor details</h4>
+                                </div>
+                                <form action="" method="GET" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <label for="fname">First Name</label>
+                                                <input type="text" name="fname" class="form-control"
+                                                    value="{{ $visitor->fname }}" readonly>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <label for="fname">Last Name</label>
+                                                <input type="text" name="fname" class="form-control"
+                                                    value="{{ $visitor->lname }}" readonly>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <label for="comment">Comment</label>
+                                                <textarea name="comment" class="form-control" readonly>{{ $visitor->comment }}</textarea>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <button type="button" class="btn btn-bold btn-pure btn-secondary btn-block"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button type="submit"
+                                                    class="btn btn-bold btn-pure btn-info float-right btn-block">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

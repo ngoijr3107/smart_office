@@ -24,38 +24,38 @@ class PurposeController extends Controller
     }
 
     public function storePurpose(Request $request)
-{
-    $rules = [
-        'purpose_name' => 'required|unique:visit_purposes,name|min:3|max:50',
-    ];
+    {
+        $rules = [
+            'purpose_name' => 'required|unique:visit_purposes.purpose_name|min:3|max:50',
+        ];
 
-    $messages = [
-        'purpose_name.required' => 'Purpose name is required.',
-        'purpose_name.min' => 'Purpose name must be at least 3 characters.',
-        'purpose_name.max' => 'Purpose name must not exceed 50 characters.',
-        'purpose_name.unique' => 'Purpose name already exists.',
-    ];
+        $messages = [
+            'purpose_name.required' => 'Purpose name is required.',
+            'purpose_name.min' => 'Purpose name must be at least 3 characters.',
+            'purpose_name.max' => 'Purpose name must not exceed 50 characters.',
+            'purpose_name.unique' => 'Purpose name already exists.',
+        ];
 
-    $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all(), $rules, $messages);
 
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+
+        $purpose = new VisitPurpose;
+        $purpose->name = ucwords(strtolower($request->purpose_name));
+        // $purpose->description = $request->description;
+        // $purpose->category = $request->category;
+        $save = $purpose->save();
+
+        if ($save) {
+            Session::flash('success', 'Successfully added a new purpose.');
+            return redirect()->route('purpose');
+        } else {
+            Session::flash('error', 'Failed to add a new purpose. Please try again later.');
+            return redirect()->route('purpose');
+        }
     }
-
-    $purpose = new VisitPurpose;
-    $purpose->name = ucwords(strtolower($request->purpose_name));
-    // $purpose->description = $request->description;
-    // $purpose->category = $request->category;
-    $save = $purpose->save();
-
-    if ($save) {
-        Session::flash('success', 'Successfully added a new purpose.');
-        return redirect()->route('purpose');
-    } else {
-        Session::flash('error', 'Failed to add a new purpose. Please try again later.');
-        return redirect()->route('purpose');
-    }
-}
 
     public function editPurpose($id)
     {
@@ -64,12 +64,27 @@ class PurposeController extends Controller
     }
 
     public function updatePurpose(Request $request, $id)
-    {
-        $purpose = VisitPurpose::find($id)->update($request->all());
+{
+    $purpose = VisitPurpose::find($id);
 
-        Session::flash('success', 'Purpose has been successfully updated.');
+    if (!$purpose) {
+        Session::flash('error', 'Purpose not found.');
         return redirect()->route('purpose');
     }
+
+    $purpose->purpose_name = ucwords(strtolower($request->purpose_name));
+
+    $save = $purpose->save();
+
+    if ($save) {
+        Session::flash('success', 'Purpose has been successfully updated.');
+        return redirect()->route('purpose');
+    } else {
+        Session::flash('error', 'Failed to update the purpose. Please try again later.');
+        return redirect()->route('purpose');
+    }
+}
+
 
     public function deletePurpose($id)
     {
