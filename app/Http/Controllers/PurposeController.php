@@ -26,7 +26,7 @@ class PurposeController extends Controller
     public function storePurpose(Request $request)
     {
         $rules = [
-            'purpose_name' => 'required|unique:visit_purposes.purpose_name|min:3|max:50',
+            'purpose_name' => 'required|min:3|max:50',
         ];
 
         $messages = [
@@ -43,9 +43,7 @@ class PurposeController extends Controller
         }
 
         $purpose = new VisitPurpose;
-        $purpose->name = ucwords(strtolower($request->purpose_name));
-        // $purpose->description = $request->description;
-        // $purpose->category = $request->category;
+        $purpose->purpose_name = ucwords(strtolower($request->purpose_name));
         $save = $purpose->save();
 
         if ($save) {
