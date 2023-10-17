@@ -15,7 +15,7 @@ class CreateVisitPurposesTable extends Migration
     {
         Schema::create('visit_purposes', function (Blueprint $table) {
             $table->id();
-            $table->string('purpose_name');
+            $table->string('purpose_name')->unique;
             $table->timestamps();
         });
     }
