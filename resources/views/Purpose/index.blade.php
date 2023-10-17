@@ -14,7 +14,7 @@
                 <div class="box-header">
                     <div class="row">
                         <div class="col-6 text-left">
-                            <h4 class="box-title">Purpose List</h4>
+                            <h4 class="box-title">List</h4>
                         </div>
                         <div class="col-6 text-right">
                             <a href="{{ route('purposeAdd') }}" class="btn btn-bold btn-pure btn-info">Add purpose</a>
