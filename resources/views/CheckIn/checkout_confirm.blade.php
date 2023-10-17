@@ -55,153 +55,73 @@
                                         <img src="{{ asset('/img/logo_web.png') }}" alt=""
                                             style="height: 60px; margin-bottom: 12px">
                                         {{-- <hr> --}}
-                                        <h5 class="text-center text-bold">Hi {{ $visitor->fname }}, Please click
-                                            Check-Out button to confirm Check-Out</h5>
+                                        <h3 class="text-center text-bold">Hi {{ $visitor->fname }},</h3>
+                                        <h5 class="text-center">Please click
+                                            Check-Out button to confirm</h5>
                                         {{-- <h3 class="text-center">Please find your name and then Check-out</h3> --}}
                                         <hr>
                                     </div>
                                 </div>
 
                                 <form action="{{ url('checkOutConfirm', ['visitor' => $visitor->id]) }}" method="POST">
-                                    @method('PUT')
                                     @csrf
-                                    {{-- <div class="row">
-                                        <div class="col-4 form-group">
-                                            <label for="fname">First Name</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="First name" name="fname"
-                                                    value="{{ $visitor->fname }}" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 form-group">
-                                            <label for="lname">Last name</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Last name" name="lname"
-                                                    value="{{ $visitor->lname }}" disabled>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-4 form-group">
-                                            <label for="email">email</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Email" name="email" value="{{ $visitor->email }}"
-                                                    disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 form-group">
-                                            <label for="phone">phone</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Phone" name="phone" value="{{ $visitor->phone }}"
-                                                    disabled>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-4 form-group">
-                                            <label for="company">company</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Company" name="company"
-                                                    value="{{ $visitor->company }}" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 form-group">
-                                            <label for="c_no">car plate no.</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Car plate no." name="c_no"
-                                                    value="{{ $visitor->c_no }}" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @method('PUT')
                                     <div class="row">
-                                        <div class="col-6 form-group">
-                                            <label for="department">Department</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Department" name="department"
-                                                    value="{{ $visitor->department }}" disabled>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-6 form-group">
-                                            <label for="purpose">Purpose</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Purpose" name="purpose"
-                                                    value="{{ $visitor->purpose }}" disabled>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
-                                    <div class="row">
-                                        {{-- <div class="col-6 form-group">
-                                            <label for="checkintime">Check-in time</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text"
-                                                    class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Time to check-in" id="checkin-time"
-                                                    value="{{ $visitor->checkintime }}" name="checkintime" readonly
-                                                    disabled>
-                                            </div>
-                                        </div> --}}
-
-
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 form-group">
                                             <label for="checkouttime">Check-out time</label>
                                             <div class="input-group mb-3">
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
                                                     placeholder="Time to check-out" id="checkout-time"
-                                                    name="checkouttime" readonly>
+                                                    name="checkouttime">
                                             </div>
                                         </div>
                                     </div>
-
-                                    {{-- <div class="row"> --}}
-                                        {{-- radio inputs --}}
-
-                                        {{-- <div class="col-12 form-group">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio1" value="option1">
-                                                <label class="form-check-label" for="inlineRadio1">Very bad</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio2" value="option2">
-                                                <label class="form-check-label" for="inlineRadio2">Bad</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio3" value="option3">
-                                                <label class="form-check-label" for="inlineRadio3">Good</label>
-                                            </div>
-                                        </div> --}}
-
-                                        {{-- radio inputs --}}
-                                    {{-- </div> --}}
-
+                                    <br />
                                     <div class="row">
+                                        {{-- radio inputs --}}
+                                        <div class="col-12 form-group">
+                                            <h5>Please let us know, how did you find our service?</h5>
+                                        </div>
+                                        <div class="col-12 form-group">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineRadio1">Very
+                                                    bad</label>&nbsp;
+                                                <input class="form-check-input" type="radio" name="rate"
+                                                    id="inlineRadio1" value="1">
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineRadio2">Bad</label>&nbsp;
+                                                <input class="form-check-input" type="radio" name="rate"
+                                                    id="inlineRadio2" value="2">
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineRadio3">Good</label>&nbsp;
+                                                <input class="form-check-input" type="radio" name="rate"
+                                                    id="inlineRadio3" value="3">
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineRadio3">Very
+                                                    Good</label>&nbsp;
+                                                <input class="form-check-input" type="radio" name="rate"
+                                                    id="inlineRadio3" value="4">
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label"
+                                                    for="inlineRadio3">Excellent</label>&nbsp;
+                                                <input class="form-check-input" type="radio" name="rate"
+                                                    id="inlineRadio3" value="5">
+                                            </div>
+                                        </div>
+
+                                        {{-- radio inputs --}}
 
                                         <div class="col-12 form-group">
                                             <label for="comment">Comment</label>
                                             <div class="input-group mb-3">
                                                 <textarea type="text" class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="How did you find our service?" id="comment" value="" name="comment"></textarea>
+                                                    placeholder="Please tell us your Opinions/Suggestions/Complaints...." id="comment" value=""
+                                                    name="comment"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +135,6 @@
                                             <button type="submit"
                                                 class="btn btn-success btn-block margin-top-10">CHECKOUT</button>
                                         </div>
-                                        <!-- /.col -->
                                     </div>
                                 </form>
                             </div>
