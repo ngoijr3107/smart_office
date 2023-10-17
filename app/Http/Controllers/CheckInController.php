@@ -114,23 +114,16 @@ class CheckInController extends Controller
         $checkintime = $request->input('checkintime');
         $checkouttime = $request->input('checkouttime');
         $comment = $request->input('comment');
+        $rate = $request->input('rate');
 
         // Update database values
         try {
             $check_in = Visitor::find($id);
-            // $check_in->fname = $fname;
-            // $check_in->lname = $lname;
-            // $check_in->email = $email;
-            // $check_in->phone = $phone;
-            // $check_in->company = $company;
-            // $check_in->c_no = $c_no;
-            // $check_in->department = $department;
-            // $check_in->purpose = $purpose;
             $check_in->status = $status;
-            // $check_in->checkintime = $checkintime;
             $check_in->checkouttime = $checkouttime;
             $check_in->comment = $comment;
-            $check_in->save();
+            $check_in->rate = $rate;
+            $check_in->update();
 
             Alert::success('Success', 'Checked-out successfully!');
             return redirect()->route('home');
