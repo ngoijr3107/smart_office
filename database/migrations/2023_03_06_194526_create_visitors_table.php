@@ -26,6 +26,7 @@ class CreateVisitorsTable extends Migration
             $table->string('status')->default('in');
             $table->dateTime('checkintime');
             $table->dateTime('checkouttime');
+            $table->string('rate');
             $table->string('comment');
             $table->timestamps();
         });
