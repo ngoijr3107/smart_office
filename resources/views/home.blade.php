@@ -26,13 +26,13 @@
         <![endif]-->
 </head>
 
-<body class="hold-transition bg-img"
+{{-- <body class="hold-transition bg-img"
     style="background: url(https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;"
-    data-overlay="1">
+    data-overlay="1"> --}}
 
     <body class="hold-transition bg-img"
         style="background: url('{{ asset('/img/bg_login.jpg') }}') no-repeat center center fixed;
@@ -73,7 +73,7 @@
                                 <div class="pt-4">
                                     {{-- <h4 class="text-dark font-size-30">Get Started<br>with your Dashboard</h4> --}}
                                     <h5 class="text-dark text-center mb-0">&copy; {{ date('Y') }}, All Rights
-                                        Reserved. <a href="https://techvilla.co.tz" class="text-info">TechBurg.</a>
+                                        Reserved. <a href="https://techburg.co.tz" class="text-info">TechBurg.</a>
                                     </h5>
                                 </div>
                             </div>
