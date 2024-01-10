@@ -15,8 +15,9 @@ class PurposeController extends Controller
     public function index()
     {
         $datas = VisitPurpose::latest()->get();
-        return view('Purpose.index', compact('datas'));
+        return view('Purpose.index')->with('datas', $datas);
     }
+    
 
     public function addPurpose()
     {

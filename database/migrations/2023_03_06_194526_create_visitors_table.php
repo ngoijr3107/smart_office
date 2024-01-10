@@ -21,7 +21,7 @@ class CreateVisitorsTable extends Migration
             $table->string('phone');
             $table->string('company');
             $table->string('c_no');
-            $table->string('department');
+            $table->unsignedBigInteger('department_id');
             $table->string('purpose');
             $table->string('status')->default('in');
             $table->dateTime('checkintime');
@@ -29,6 +29,8 @@ class CreateVisitorsTable extends Migration
             $table->string('rate');
             $table->string('comment');
             $table->timestamps();
+
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 

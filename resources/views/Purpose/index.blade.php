@@ -22,16 +22,16 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    @if(session('errors'))
+                    @if (session('errors'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             Something is wrong:
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                             <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     @endif
@@ -63,32 +63,44 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $no = 1
+                                    $no = 1;
                                 @endphp
-                                @foreach ( $datas as $data )
+                                @if (!is_null($datas) && count($datas) > 0)
+                                    @foreach ($datas as $data)
+                                        <tr>
+                                            <td class="text-center">{{ $no++ }}</td>
+                                            <td class="text-left text-nowrap">{{ $data->purpose_name }}</td>
+                                            <td class="text-center">
+                                                {{ date('M d Y, H:i', strtotime($data->updated_at)) }}
+                                            </td>
+                                            <td class="text-center">
+                                                <span data-toggle="modal" class="btn-view" id="{{ $data->id }}"
+                                                    data-purpose="{{ json_encode($data) }}" data-target="#modal-detail">
+                                                    <a class="btn btn-sm btn-primary" href="javascript:void(0);" data-toggle="tooltip"
+                                                        data-placement="bottom" title="View">
+                                                        <i class="ti-eye"></i>
+                                                    </a>
+                                                </span>
+                                                <form action="{{ url('purpose/' . $data->id) }}" method="POST"
+                                                    onsubmit="return confirm('Are you sure? This record and its details will be permanently deleted!')"
+                                                    class="d-inline">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="ml-3 btn btn-danger" data-toggle="tooltip" data-placement="bottom"
+                                                        title="Delete">
+                                                        <i class="ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td class="text-center">{{ $no++}}</td>
-                                        <td class="text-left text-nowrap">{{ $data->purpose_name}}</td>
-                                        <td class="text-center">
-                                            {{ date('M d Y, H:i', strtotime($data->updated_at)) }}
-                                        </td>
-                                        <td class="text-center">
-                                            <span data-toggle="modal" class="btn-view" id="{{ $data -> id}}" data-purpose="{{ json_encode($data) }}" data-target="#modal-detail">
-                                                <a class="btn btn-sm btn-primary" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="View">
-                                                    <i class="ti-eye"></i>
-                                                </a>
-                                            </span>
-                                            <form action="{{ url('purpose/'.$data -> id) }}" method="POST" onsubmit="return confirm('Are you sure? This record and its details will be permanantly deleted!')" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="ml-3 btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Delete">
-                                                    <i class="ti-trash"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        <td colspan="4" class="text-center">No data available.</td>
                                     </tr>
-                                @endforeach
+                                @endif
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
@@ -113,23 +125,29 @@
                                     <h4 class="box-title">View Purposes</h4>
                                 </div>
                                 <form action="" method="GET" enctype="multipart/form-data">
-                                @csrf
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="purpose_name">Name</label>
-                                            <input type="text" name="purpose_name" class="form-control" value="{{ $data->purpose_name }}" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="box-footer">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <button type="button" class="btn btn-bold btn-pure btn-secondary btn-block" data-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="col-3">
-                                                <button type="submit" class="btn btn-bold btn-pure btn-info float-right btn-block">Edit</button>
+                                    @csrf
+                                    {{-- @foreach ($datas as $data) --}}
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label for="purpose_name">Name</label>
+                                                <input type="text" name="purpose_name" class="form-control"
+                                                    value="{{ $data->purpose_name }}" readonly>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="box-footer">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <button type="button"
+                                                        class="btn btn-bold btn-pure btn-secondary btn-block"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button type="submit"
+                                                        class="btn btn-bold btn-pure btn-info float-right btn-block">Edit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{-- @endforeach --}}
                                 </form>
                             </div>
                         </div>
@@ -142,24 +160,24 @@
 
 @section('script')
     <script>
-        $('.btn-view').on('click',function(){
+        $('.btn-view').on('click', function() {
             // alert('hello')
             var item = $(this).data('purpose')
             $('#modal-detail').find('input[name=name]').val(item.name)
             $('#modal-detail').find('textarea[name=description]').val(item.description)
             // console.log(item.id)
             $('#modal-detail').find('input[name=category]').val(item.category)
-            if(item.category == 1){
+            if (item.category == 1) {
                 $('#modal-detail').find('input[name=category]').val('Visit Purpose');
-            }else if(item.category == 2) {
+            } else if (item.category == 2) {
                 $('#modal-detail').find('input[name=category]').val('Area Purpose');
-            }else{
+            } else {
                 $('#modal-detail').find('input[name=category]').val('Communication Purpose');
             }
-            $('#modal-detail').find('form').attr('action','/purpose/edit/'+item.id)
+            $('#modal-detail').find('form').attr('action', '/purpose/edit/' + item.id)
         })
 
-        $(".alert").fadeTo(4000, 500).slideUp(500, function(){
+        $(".alert").fadeTo(4000, 500).slideUp(500, function() {
             $(".alert").slideUp(500);
         });
     </script>

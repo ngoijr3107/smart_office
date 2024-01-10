@@ -73,7 +73,7 @@
                                 <div class="pt-4">
                                     {{-- <h4 class="text-dark font-size-30">Get Started<br>with your Dashboard</h4> --}}
                                     <h5 class="text-dark text-center mb-0">&copy; {{ date('Y') }}, All Rights
-                                        Reserved. <a href="https://techvilla.co.tz" class="text-info">Techvilla.</a>
+                                        Reserved. <a href="https://techvilla.co.tz" class="text-info">TechBurg.</a>
                                     </h5>
                                 </div>
                             </div>
