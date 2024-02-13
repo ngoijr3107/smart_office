@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Visitor;
+use App\Models\Department;
+use App\Models\VisitPurpose;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use DataTables;
@@ -12,7 +14,8 @@ class CheckInController extends Controller
     public function checkIn()
     {
         // Alert::success('Success Title');
-        return view('CheckIn.check_in');
+        $departments = Department::all();
+        return view('CheckIn.check_in', compact(['departments']));
     }
 
     public function checkInFinal(Request $request)
@@ -33,7 +36,9 @@ class CheckInController extends Controller
         $request->session()->put('c_no', $c_no);
 
         // Redirect the user to next page
-        return view('CheckIn.check_in_two', compact('fname', 'lname', 'phone', 'company', 'c_no', 'email'));
+        $departments = Department::get();
+        $purposes = VisitPurpose::get();
+        return view('CheckIn.check_in_two', compact('departments', 'purposes', 'fname', 'lname', 'phone', 'company', 'c_no', 'email'));
     }
 
     public function saveCheckIn(Request $request)
@@ -46,8 +51,8 @@ class CheckInController extends Controller
         $phone = $request->session()->get('phone');
         $company = $request->session()->get('company');
         $c_no = $request->session()->get('c_no');
-        $department = $request->input('department');
-        $purpose = $request->input('purpose');
+        $department_id = $request->input('department_id');
+        $purpose_id = $request->input('purpose_id');
         $status = 'in';
         $checkintime = $request->input('checkintime');
         // $signature = $request->input('signature');
@@ -61,8 +66,8 @@ class CheckInController extends Controller
             $check_in->phone = $phone;
             $check_in->company = $company;
             $check_in->c_no = $c_no;
-            $check_in->department = $department;
-            $check_in->purpose = $purpose;
+            $check_in->department_id = $department_id;
+            $check_in->purpose_id = $purpose_id;
             $check_in->status = $status;
             $check_in->checkintime = $checkintime;
             // $signature->signature = $signature;
