@@ -382,6 +382,12 @@
                                 <span>Purpose</span>
                             </a>
                         </li>
+                        <li class="pt-3 {{ Request::segment(1) === 'department' ? 'active' : '' }}">
+                            <a href="{{ url('department') }}">
+                                <i class="ti-pencil-alt2"></i>
+                                <span>Department</span>
+                            </a>
+                        </li>
                         {{-- <li class="pt-3 {{ Request::segment(1) === 'suppliers' ? 'active' : '' }}">
                             <a href="{{ url('suppliers') }}">
                                 <i class="ti-package"></i>
