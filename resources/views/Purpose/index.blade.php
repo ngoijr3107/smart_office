@@ -76,8 +76,8 @@
                                             <td class="text-center">
                                                 <span data-toggle="modal" class="btn-view" id="{{ $data->id }}"
                                                     data-purpose="{{ json_encode($data) }}" data-target="#modal-detail">
-                                                    <a class="btn btn-sm btn-primary" href="javascript:void(0);" data-toggle="tooltip"
-                                                        data-placement="bottom" title="View">
+                                                    <a class="btn btn-sm btn-primary" href="javascript:void(0);"
+                                                        data-toggle="tooltip" data-placement="bottom" title="View">
                                                         <i class="ti-eye"></i>
                                                     </a>
                                                 </span>
@@ -86,8 +86,8 @@
                                                     class="d-inline">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button class="ml-3 btn btn-danger" data-toggle="tooltip" data-placement="bottom"
-                                                        title="Delete">
+                                                    <button class="ml-3 btn btn-danger" data-toggle="tooltip"
+                                                        data-placement="bottom" title="Delete">
                                                         <i class="ti-trash"></i>
                                                     </button>
                                                 </form>
@@ -100,7 +100,7 @@
                                     </tr>
                                 @endif
                             </tbody>
-                            
+
                         </table>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                                 </div>
                                 <form action="" method="GET" enctype="multipart/form-data">
                                     @csrf
-                                    {{-- @foreach ($datas as $data) --}}
+                                    @if (isset($data))
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label for="purpose_name">Name</label>
@@ -147,7 +147,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    {{-- @endforeach --}}
+                                    @endif
                                 </form>
                             </div>
                         </div>
