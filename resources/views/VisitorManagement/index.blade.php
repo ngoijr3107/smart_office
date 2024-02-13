@@ -56,7 +56,7 @@
                                     <tr class="">
                                         <td class="text-center">{{ $index + 1 }}</td>
                                         <td class="text-left text-nowrap">{{ $visitor->fname }} {{ $visitor->lname }}</td>
-                                        <td class="text-left text-nowrap">{{ $visitor->checkintime }}</td>
+                                        <td class="text-left text-nowrap">{{ date('M d Y, H:i', strtotime($visitor->checkintime)) }}</td>
                                         <td class="text-left text-nowrap">
                                             {{ $visitor->department ? $visitor->department->department_name : 'N/A' }}</td>
 
@@ -67,7 +67,7 @@
                                                     class="badge badge-warning">Checked-in</span></td>
                                         @else
                                             <td class="text-left text-nowrap"><span
-                                                    class="badge badge-info">Checked-out</span></td>
+                                                    class="badge badge-info">Checked-out <br /> {{ date('M d Y, H:i', strtotime($visitor->checkouttime)) }}</span></td>
                                         @endif
 
 
