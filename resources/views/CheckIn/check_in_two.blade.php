@@ -24,6 +24,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 </head>
+
 <body class="hold-transition bg-img"
     style="background: url(https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -66,29 +67,32 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-12 form-group">
-                                            <label for="department">Department</label>
+                                            <label for="department_id">Department</label>
                                             <div class="input-group mb-3">
                                                 <select
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    aria-label="Default select example" name="department">
+                                                    aria-label="Default select example" name="department_id">
                                                     <option selected disabled>Select Department..</option>
-                                                    <option value="ICT">ICT</option>
-                                                    <option value="HR">HR</option>
-                                                    <option value="Procurement">Procurement</option>
+                                                    @foreach ($departments as $department)
+                                                        <option value="{{ $department->id }}">
+                                                            {{ $department->department_name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div class="col-12 form-group">
-                                            <label for="purpose">Purpose</label>
+                                            <label for="purpose_id">Purpose</label>
                                             <div class="input-group mb-3">
                                                 <select
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    aria-label="Default select example" name="purpose">
+                                                    aria-label="Default select example" name="purpose_id">
                                                     <option selected disabled>Select Purpose..</option>
-                                                    <option value="Interview">Interview</option>
-                                                    <option value="Meeting">Meeting</option>
-                                                    <option value="Other">Other</option>
+                                                    @foreach ($purposes as $purpose)
+                                                        <option value="{{ $purpose->id }}">
+                                                            {{ $purpose->purpose_name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -100,8 +104,8 @@
                                             <div class="input-group mb-3">
                                                 <input type="text"
                                                     class="form-control pl-15 bg-transparent bt-0 bl-0 br-0 text-dark border-radius-0"
-                                                    placeholder="Time to check-in" id="checkin-time"
-                                                    name="checkintime" readonly>
+                                                    placeholder="Time to check-in" id="checkin-time" name="checkintime"
+                                                    readonly>
                                             </div>
                                         </div>
                                     </div>
