@@ -22,15 +22,16 @@ class CreateVisitorsTable extends Migration
             $table->string('company');
             $table->string('c_no');
             $table->unsignedBigInteger('department_id');
-            $table->string('purpose');
+            $table->unsignedBigInteger('purpose_id');
             $table->string('status')->default('in');
             $table->dateTime('checkintime');
             $table->dateTime('checkouttime');
-            $table->string('rate');
-            $table->string('comment');
+            $table->string('rate')->nullable();
+            $table->string('comment')->nullable();
             $table->timestamps();
 
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->foreign('purpose_id')->references('id')->on('visit_purposes')->onDelete('cascade');
         });
     }
 
