@@ -14,17 +14,18 @@
         ->get();
 
     $ratePerDepartment = App\Models\Visitor::join('departments', 'visitors.department_id', '=', 'departments.id')
-        ->select('departments.department_name as department_name', DB::raw('AVG(visitors.rate) as average_rating'))
+        ->select('departments.department_name as department_name', DB::raw('AVG(visitors.rate)*20 as average_rating'))
         ->whereNotNull('visitors.rate')
-        ->whereDate('visitors.updated_at', today())
+        // ->whereDate('visitors.updated_at', today())
         ->groupBy('department_name')
         ->get();
 
-    $underratedThreshold = 3.5; // You can adjust this threshold as needed
+    $underratedThreshold = 3.5*20; // You can adjust this threshold as needed
 
     $underratedDepartments = $ratePerDepartment->filter(function ($item) use ($underratedThreshold) {
         return $item->average_rating < $underratedThreshold;
     });
+
 @endphp
 
 @section('content')
@@ -86,10 +87,12 @@
             <div class="box">
                 <div class="box-header">
                     <div id="rating-chart"></div>
-                    {{-- <p>Underrated Departments:</p>
+                    {{-- <p>Rate Threshold: 70%</p>
                     <ul>
+                        <li>Departments < 70% are Poor</li>
+                        <li>Departments >= 70% are Better</li>
                         @foreach ($underratedDepartments as $department)
-                            <li>{{ $department->department_name }} (Average Rating: {{ $department->average_rating }})</li>
+                            <li>{{ $department->department_name }} (Average Rating: {{ $department->average_rating }}%)</li>
                         @endforeach
                     </ul> --}}
                 </div>
@@ -126,39 +129,29 @@
         chart.render();
 
         // Rating chat per department
-        var options = {
-            chart: {
-                type: 'bar',
+        document.addEventListener("DOMContentLoaded", function() {
+            var options = {
+                chart: {
+                    type: 'bar',
+                },
+                title: {
+                text: 'Number of Visits per Department',
+                align: 'center',
+                fontFamily: 'Poppins'
             },
-            title: {
-                text: 'Average Rating per Department',
-                align: 'center'
-            },
-            series: [{
-                name: 'Average Rating',
-                data: @json($ratePerDepartment->pluck('average_rating')),
-            }],
-            xaxis: {
-                categories: @json($ratePerDepartment->pluck('department_name'))
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true,
-                        // position: 'top',
-                        formatter: function(val) {
-                            return val < 3.5 ? 'Poor' : 'Better';
-                        },
-                        offsetY: -10
-                    }
+                series: [{
+                    name: 'Average Rating',
+                    data: @json($ratePerDepartment->pluck('average_rating'))
+                }],
+                xaxis: {
+                    categories: @json($ratePerDepartment->pluck('department_name'))
                 }
             }
-        }
 
+            var ratingChart = new ApexCharts(document.querySelector("#rating-chart"), options);
 
-        var ratingChart = new ApexCharts(document.querySelector("#rating-chart"), options);
-
-        ratingChart.render();
+            ratingChart.render();
+        });
     </script>
 
     <script src="{{ asset('vendor/highchartjs/highcharts.js') }}"></script>
