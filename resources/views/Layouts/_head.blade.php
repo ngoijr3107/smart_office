@@ -9,4 +9,9 @@
 <link rel="stylesheet" href="{{ asset('vendor/select2/select2.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/datatable-bootsrtrap4/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/sweetalert2.css') }}">
+<!-- Add these lines inside the head section -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.28.0/dist/apexcharts.min.css">
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
 
