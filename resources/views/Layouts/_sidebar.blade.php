@@ -358,24 +358,6 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        {{-- <li class="pt-3 {{ Request::segment(1) === 'areas' ? 'active' : '' }}">
-                            <a href="{{ url('areas') }}">
-                                <i class="ti-location-pin"></i>
-                                <span>Area</span>
-                            </a>
-                        </li>
-                        <li class="pt-3 {{ Request::segment(1) === 'locations' ? 'active' : '' }}">
-                            <a href="{{ url('locations') }}">
-                                <i class="ti-location-pin"></i>
-                                <span>Location</span>
-                            </a>
-                        </li>
-                        <li class="pt-3 {{ Request::segment(1) === 'sites' ? 'active' : '' }}">
-                            <a href="{{ url('sites') }}">
-                                <i class="ti-location-pin"></i>
-                                <span>Site</span>
-                            </a>
-                        </li> --}}
                         <li class="pt-3 {{ Request::segment(1) === 'purpose' ? 'active' : '' }}">
                             <a href="{{ url('purpose') }}">
                                 <i class="ti-pencil-alt2"></i>
@@ -388,55 +370,8 @@
                                 <span>Department</span>
                             </a>
                         </li>
-                        {{-- <li class="pt-3 {{ Request::segment(1) === 'suppliers' ? 'active' : '' }}">
-                            <a href="{{ url('suppliers') }}">
-                                <i class="ti-package"></i>
-                                <span>Supplier</span>
-                            </a>
-                        </li>
-                        <li class="pt-3 {{ Request::segment(1) === 'device' ? 'active' : '' }}">
-                            <a href="{{ url('device') }}">
-                                <i class="ti-mobile"></i>
-                                <span>Device</span>
-                            </a>
-                        </li>
-                        <li class="pt-3 {{ Request::segment(1) === 'purpose-device' ? 'active' : '' }}">
-                            <a href="{{ url('purpose-device') }}">
-                                <i class="ti-tablet"></i>
-                                <span>Purpose Device</span>
-                            </a>
-                        </li>
-                        <li class="pt-3 {{ Request::segment(1) === 'tools' ? 'active' : '' }}">
-                            <a href="{{ url('tools') }}">
-                                <i class="ti-hummer"></i>
-                                <span>Tools</span>
-                            </a>
-                        </li>
-                        <li class="pt-3 {{ Request::segment(1) === 'high-risk' ? 'active' : '' }}">
-                            <a href="{{ url('high-risk') }}">
-                                <i class="ti-hummer"></i>
-                                <span>High Risk Tools</span>
-                            </a>
-                        </li> --}}
                     </ul>
                 </li>
-                {{-- <li class="treeview {{ Request::segment(1) === 'vms-parameter' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="ti-settings"></i>
-                        <span>Frontdesk</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-right pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="pt-3 {{ Request::segment(1) === 'vms-parameter' ? 'active' : '' }}">
-                            <a href="{{ url('vms-parameter')}}">
-                                <i class="ti-blackboard"></i>
-                                <span>VMS</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
             @endif
             @if (Auth::user()->user_type != 20 && Auth::user()->user_type != 30)
                 <li class="header nav-small-cap text-uppercase">UTILITIES</li>
@@ -447,7 +382,7 @@
                     </a>
                 </li>
             @endif
-            @if (Auth::user()->user_type == 99)
+            {{-- @if (Auth::user()->user_type == 99)
                 <li
                     class="{{ Request::segment(1) === 'user' || Request::segment(1) === 'userAdd' || Request::segment(1) === 'userEdit' ? 'active' : '' }}">
                     <a href="{{ url('user') }}">
@@ -455,7 +390,7 @@
                         <span>User</span>
                     </a>
                 </li>
-            @endif
+            @endif --}}
             {{-- <li>
                 <a href="{{ route('logout') }}">
                     <i class="ti-power-off"></i>
