@@ -163,17 +163,7 @@
         $('.btn-view').on('click', function() {
             // alert('hello')
             var item = $(this).data('purpose')
-            $('#modal-detail').find('input[name=name]').val(item.name)
-            $('#modal-detail').find('textarea[name=description]').val(item.description)
-            // console.log(item.id)
-            $('#modal-detail').find('input[name=category]').val(item.category)
-            if (item.category == 1) {
-                $('#modal-detail').find('input[name=category]').val('Visit Purpose');
-            } else if (item.category == 2) {
-                $('#modal-detail').find('input[name=category]').val('Area Purpose');
-            } else {
-                $('#modal-detail').find('input[name=category]').val('Communication Purpose');
-            }
+            $('#modal-detail').find('input[name=purpose_name]').val(item.purpose_name)
             $('#modal-detail').find('form').attr('action', '/purpose/edit/' + item.id)
         })
 
