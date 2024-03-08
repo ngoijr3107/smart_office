@@ -50,7 +50,7 @@ Route::post('forgot/reset', [AuthController::class, 'updateForgotPass'])->name('
 
 Route::group(['middleware' => 'auth'], function () {
     // DASHBOARD
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('Dashboard');
+    Route::get('dashboard/{startDate?}/{endDate?}', [DashboardController::class, 'index'])->name('Dashboard');
 
 
     //Purpose
