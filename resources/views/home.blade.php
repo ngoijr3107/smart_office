@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('/img/favicon.jpg') }}">
+    <link rel="icon" href="{{ asset('/img/favicon.png') }}">
     <title>Smart Office</title>
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/bootstrap.css') }}">
@@ -35,7 +35,7 @@
     data-overlay="1"> --}}
 
     <body class="hold-transition bg-img"
-        style="background: url('{{ asset('/img/bg_login.jpg') }}') no-repeat center center fixed;
+        style="background: url('{{ asset('/img/bg-ds.jpeg') }}') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -52,7 +52,7 @@
                                 style="background: rgba(255, 255, 255, .9)">
                                 <div class="row mb-4">
                                     <div class="col-12 text-center">
-                                        <img src="{{ asset('/img/logo_web.png') }}" alt="" style="height: 50px">
+                                        <img src="{{ asset('/img/logo.png') }}" alt="" style="">
                                         <h2 class="text-center">Welcome, Please tap on button below to proceed</h2>
                                     </div>
                                 </div>
