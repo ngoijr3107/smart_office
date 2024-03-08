@@ -9,7 +9,7 @@ use App\Models\Visitor;
 class VisitorController extends Controller
 {
     public function listVisitors(){
-        $visitors = Visitor::latest()->paginate(5);
+        $visitors = Visitor::latest()->get();
 
         return view('VisitorManagement.index')->with('visitors', $visitors);
     }
