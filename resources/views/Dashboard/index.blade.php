@@ -135,7 +135,7 @@
                     type: 'bar',
                 },
                 title: {
-                text: 'Number of Visits per Department',
+                text: 'Average rating per Department (%)',
                 align: 'center',
                 fontFamily: 'Poppins'
             },
