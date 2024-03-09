@@ -28,7 +28,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;" data-overlay="1"> --}}
-    <body class="hold-transition bg-img" style="background: url('{{ asset('/img/bg_login1.jpg') }}') no-repeat center center fixed;
+    <body class="hold-transition bg-img" style="background: url('{{ asset('/img/bg-ds.jpeg') }}') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -101,7 +101,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 text-center mt-4 mb-4">
-                                            <button type="submit" class="btn btn-info btn-block margin-top-10">SIGN IN</button>
+                                            <button type="submit" class="btn btn-success btn-block margin-top-10">SIGN IN</button>
                                         </div>
                                         <!-- /.col -->
                                     </div>
