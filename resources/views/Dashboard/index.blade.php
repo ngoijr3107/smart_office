@@ -137,7 +137,8 @@
                 title: {
                 text: 'Average rating per Department (%)',
                 align: 'center',
-                fontFamily: 'Poppins'
+                fontFamily: 'Poppins',
+                fontColor: '#242529'
             },
                 series: [{
                     name: 'Average Rating',

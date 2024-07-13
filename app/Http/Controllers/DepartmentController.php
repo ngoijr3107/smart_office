@@ -17,7 +17,7 @@ class DepartmentController extends Controller
         $datas = Department::latest()->get();
         return view('Department.index')->with('datas', $datas);
     }
-    
+
 
     public function add()
     {
@@ -63,26 +63,26 @@ class DepartmentController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $department = Department::find($id);
+    {
+        $department = Department::find($id);
 
-    if (!$department) {
-        Session::flash('error', 'Department not found.');
-        return redirect()->route('department');
+        if (!$department) {
+            Session::flash('error', 'Department not found.');
+            return redirect()->route('department');
+        }
+
+        $department->department_name = ucwords(strtolower($request->department_name));
+
+        $save = $department->save();
+
+        if ($save) {
+            Session::flash('success', 'Department has been successfully updated.');
+            return redirect()->route('department');
+        } else {
+            Session::flash('error', 'Failed to update the department. Please try again later.');
+            return redirect()->route('department');
+        }
     }
-
-    $department->department_name = ucwords(strtolower($request->department_name));
-
-    $save = $department->save();
-
-    if ($save) {
-        Session::flash('success', 'Department has been successfully updated.');
-        return redirect()->route('department');
-    } else {
-        Session::flash('error', 'Failed to update the department. Please try again later.');
-        return redirect()->route('department');
-    }
-}
 
 
     public function delete($id)

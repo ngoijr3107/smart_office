@@ -36,6 +36,8 @@ Route::put('checkOutConfirm/{visitor}', [CheckInController::class, 'checkOutConf
 
 //Admin visitors routes
 Route::get('visitor', [VisitorController::class, 'listVisitors'])->name('visitor');
+Route::get('visitor/edit/{id}', [VisitorController::class, 'editVisitor'])->name('editVisitor');
+Route::delete('visitor/{id}', [VisitorController::class, 'deleteVisitor'])->name('deleteVisitor');
 //Admin visitors routes
 
 Route::get('/login', [AuthController::class, 'showFormLogin'])->name('loginForm');
